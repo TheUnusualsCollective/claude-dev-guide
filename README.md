@@ -1,2 +1,2 @@
 # claude-dev-guide
-Provides common, general purpose configuration for projects using Claude.
+This project provides common, general purpose configuration for projects planning to use Claude.

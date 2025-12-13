@@ -14,30 +14,38 @@
 
 
 ## Project-Specific Configuration
-<!-- Reference your project-specific files here -->
-- Technology stack: See claude-config/tech-stack.md
-- Implementation workflow: See claude-config/workflow.md
-- Build commands: See claude-config/commands.md
-- API documentation: See claude-config/api-docs.md
+<!-- Customize these for your project -->
+- Technology stack: See `claude-config/tech-stack.md` (create if needed)
+- Implementation workflow: See `claude-config/workflow.md` (create if needed)
+- Build commands: See `claude-config/commands.md` (create if needed)
+- Project-specific directives: See `claude-config/directives/directives-project-specific-TEMPLATE.md`
 
 
 ## Session Workflow
 
+Development notes provide continuity across sessions. Customize paths for your project.
+
 **BEFORE any work, you MUST:**
 
-1. **Read development status**: `claude-config/development-status.md` (identifies current notes file index)
-2. **Verify file structure**: List `project-notes/development-notes-archive/` to confirm current index
-3. **Read current notes**: `project-notes/development-notes-archive/development-notes_XXX.md` (use index from step 1)
-4. **Create new notes file if needed**:
-   - Increment index when starting new major work session
-   - **ALWAYS create in**: `project-notes/development-notes-archive/development-notes_<NEXT>.md`
-   - **NEVER create in**: `claude-config/`
+1. **Read development status**: `project-notes/development-status.md` (identifies current notes file index)
+2. **Read current notes**: Use the index from status file to find the current notes file
+3. **Create new notes file if needed**: Increment index when starting new major work session
+
+**Recommended structure:**
+```
+project-notes/
+├── development-status.md          # Current state and notes index
+└── development-notes-archive/
+    ├── development-notes_001.md
+    ├── development-notes_002.md
+    └── ...
+```
 
 ### Update Triggers
 
 **Update notes file immediately when:**
 - Making architecture/design decisions
-- Discovering new API capabilities or bugs
+- Discovering bugs or limitations
 - Implementing major features
 - Identifying constraints or trade-offs
 - Any material discovery relevant to future work
@@ -109,12 +117,17 @@
 - `directives-coding-logging.md` - Proper logging practices
 - `directives-coding-organization.md` - Code structure and imports
 
+**Problem Solving:**
+- `directives-problem-isolation.md` - Reduce/verify/expand debugging workflow
+- `directives-coordinate-system-transforms.md` - Multi-format coordinate transformations
+
 **Python Specific:**
 - `directives-python-package-management.md` - Using `uv` for dependencies
 
-**Project Specific:**
-- `directives-project-organization.md` - Directory structure
+**Project Organization:**
+- `directives-project-organization.md` - Directory structure and patterns
 - `directives-antipatterns.md` - Common mistakes to avoid
+- `directives-project-specific-TEMPLATE.md` - Template for project-specific overrides
 
 **All directives**: See `claude-config/directives/` directory
 
