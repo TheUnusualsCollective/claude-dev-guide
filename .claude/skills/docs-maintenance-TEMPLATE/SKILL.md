@@ -11,6 +11,21 @@ TEMPLATE: Rename directory from "docs-maintenance-TEMPLATE" to "docs-maintenance
 
 Keeps documentation accurate by aggressively removing outdated content.
 
+## Scope
+
+**This skill manages:**
+- README files
+- `docs/` directory
+- Code comments and docstrings
+- API documentation
+- Any `.md` files NOT in development notes
+
+**Does NOT touch:**
+- Development notes (managed by session-management)
+- Development status file (managed by session-management)
+
+Development notes are session context, not permanent documentation.
+
 ## Core Philosophy
 
 **Outdated documentation is worse than no documentation.**

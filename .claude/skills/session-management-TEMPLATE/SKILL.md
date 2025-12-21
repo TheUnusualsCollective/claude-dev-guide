@@ -12,6 +12,20 @@ Customize paths and workflows to match your project structure.
 
 This skill ensures development continuity across sessions by managing development notes and status tracking.
 
+## Scope
+
+**This skill ONLY manages:**
+- Development notes files (customize path below)
+- Development status file (customize path below)
+
+**Does NOT touch:**
+- README files
+- `docs/` directory
+- Code comments
+- Any other documentation
+
+See `docs-maintenance` skill for other documentation.
+
 ## When to Use
 
 **Session Start** - Automatically invoke when:
