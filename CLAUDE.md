@@ -20,6 +20,22 @@
 - Build commands: See `claude-config/commands.md` (create if needed)
 - Project-specific directives: See `claude-config/directives/directives-project-specific-TEMPLATE.md`
 
+---
+
+## Specialized Agents
+
+Use these for domain-specific tasks:
+
+| Agent | Use For |
+| ----- | ------- |
+| `python-general` | General Python utilities, file I/O, data processing |
+| `prototype-builder` | Rapid prototyping, proof-of-concept implementations |
+| `docs-curator` | Documentation review, updates, and maintenance |
+| `code-reviewer` | Code review, quality feedback, PR evaluation |
+
+**Adding project-specific agents:** Create new `.md` files in `.claude/agents/` following the existing format.
+
+---
 
 ## Session Workflow
 
@@ -73,31 +89,39 @@ project-notes/
 
 **Framework**: See `claude-config/directives/directives-usage-guide.md` for when and how to use directives.
 
-### Critical Rules (Always Apply)
+### What You MUST Do
 
-**Python Package Management:**
-- ONLY use `uv` (NEVER `pip`)
-- Add package: `uv add package`
-- Run code: `uv run script.py`
+- **Use `uv`** for all package management (`uv add`, `uv run`)
+- **Use `logging` module** for all status output
+- **Use ASCII only** in console output (`[OK]` `[FAIL]` `[WARN]`)
+- **Search for existing code** before writing new functions
+- **Put executable scripts** in `scripts/` directory only
 
-**Code Organization:**
-- NO `if __name__ == "__main__"` in library files (`src/`, `utils/`)
-- Executable scripts ONLY in `scripts/` directory
-- NO hard-coded dictionary keys in generic functions
-- NO duplicated I/O logic (use `utils/file_utils.py`)
+### What You MUST NOT Do
 
-**Before Writing New Code:**
-1. Search: `grep -r "def similar_function" python/`
+- **NEVER** use `pip` - only `uv`
+- **NEVER** add `if __name__ == "__main__"` in library files (`src/`, `lib/`, `utils/`)
+- **NEVER** use `print()` for status messages - use `logging`
+- **NEVER** use Unicode in console output (causes Windows encoding errors)
+- **NEVER** hard-code values that should be parameters
+- **NEVER** duplicate I/O logic - create/use utilities
+- **NEVER** include Claude attribution in git commit messages
+
+### Red Flags
+
+Watch for these anti-patterns that indicate a problem:
+- `print()` statements in library code
+- `pip install` or `pip freeze` commands
+- `if __name__ == "__main__":` in `src/`, `lib/`, or `utils/`
+- Hard-coded paths or configuration values
+- Duplicated file reading/writing logic across files
+- Unicode symbols in logging output
+
+### Before Writing New Code
+
+1. Search: `grep -r "def similar_function" src/`
 2. Check if existing code can be generalized
 3. Only create new if fundamentally different
-
-**Logging:**
-- ALWAYS use `logging` module (NEVER `print()`)
-- NO Unicode characters (use ASCII: `[OK]` not `✓`)
-
-**Git Commit Messages:**
-- ❌ **DO NOT** include Claude attribution (`Generated with [Claude Code]` or `Co-Authored-By: Claude`)
-- ✅ **DO** write clear, professional commit messages with context
 
 ### Directive Categories
 
